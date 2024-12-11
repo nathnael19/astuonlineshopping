@@ -1,9 +1,3 @@
-<%-- 
-    Document   : homePage
-    Created on : Dec 9, 2024, 4:07:09 PM
-    Author     : DELL
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Shopping</title>
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css"/>
+   <script src="../bootstrap/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -52,7 +48,7 @@
     </nav>
 
     <!-- Body Section -->
-    <div class="container my-6">
+    <div class="my-6">
         <h1 class="text-center">Available Products</h1>
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
@@ -62,6 +58,7 @@
                         <th>Product Name</th>
                         <th>Category</th>
                         <th>Price ($)</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,37 +67,51 @@
                         <td>iPhone 14</td>
                         <td>Electronics</td>
                         <td>799</td>
+                        <td>
+                            <a href="cart.jsp" class="btn btn-primary btn-sm">Add to Cart</a>
+                        </td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Adidas Sneakers</td>
                         <td>Footwear</td>
                         <td>120</td>
+                        <td>
+                            <a href="cart.jsp" class="btn btn-primary btn-sm">Add to Cart</a>
+                        </td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>Samsung Smart TV</td>
                         <td>Electronics</td>
                         <td>999</td>
+                        <td>
+                            <a href="cart.jsp" class="btn btn-primary btn-sm">Add to Cart</a>
+                        </td>
                     </tr>
                     <tr>
                         <td>4</td>
                         <td>Leather Jacket</td>
                         <td>Fashion</td>
                         <td>150</td>
+                        <td>
+                            <a href="cart.jsp" class="btn btn-primary btn-sm">Add to Cart</a>
+                        </td>
                     </tr>
                     <tr>
                         <td>5</td>
                         <td>Gaming Laptop</td>
                         <td>Electronics</td>
                         <td>1500</td>
+                        <td>
+                            <a href="cart.jsp" class="btn btn-primary btn-sm">Add to Cart</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

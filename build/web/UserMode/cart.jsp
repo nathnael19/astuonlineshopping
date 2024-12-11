@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>My Cart</title>
-        <link rel="stylesheet" href="../bootstrap/bootstrap.min.css"/>
+       <link rel="stylesheet" href="../bootstrap/bootstrap.min.css"/>
    <script src="../bootstrap/bootstrap.bundle.min.js"></script>
     </head>
     <body>

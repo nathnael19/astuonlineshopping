@@ -13,6 +13,8 @@
     <title>Add Product - Online Shopping</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css"/>
+   <script src="../bootstrap/bootstrap.bundle.min.js"></script>
     <style>
         .form-container {
             max-width: 600px;
@@ -45,7 +47,6 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav">
-                    <!-- Profile Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Profile
@@ -64,17 +65,17 @@
     <!-- Add Product Form -->
     <div class="form-container">
         <h2 class="text-center mb-4">Add New Product</h2>
-        <form>
+        <form action="../AddProduct" method="post">
             <!-- Product Name -->
             <div class="mb-3">
                 <label for="productName" class="form-label">Product Name</label>
-                <input type="text" class="form-control" id="productName" placeholder="Enter product name" required>
+                <input type="text" name="name" class="form-control" id="productName" placeholder="Enter product name" required>
             </div>
 
             <!-- Category -->
             <div class="mb-3">
                 <label for="productCategory" class="form-label">Category</label>
-                <select class="form-select" id="productCategory" required>
+                <select class="form-select" id="productCategory" name="productCategory" required>
                     <option selected disabled>Select category</option>
                     <option value="Electronics">Electronics</option>
                     <option value="Footwear">Footwear</option>
@@ -87,7 +88,7 @@
             <!-- Price -->
             <div class="mb-3">
                 <label for="productPrice" class="form-label">Price ($)</label>
-                <input type="number" class="form-control" id="productPrice" placeholder="Enter product price" required>
+                <input type="number" name="price" class="form-control" id="productPrice" placeholder="Enter product price" required>
             </div>
 
             <!-- Submit Button -->

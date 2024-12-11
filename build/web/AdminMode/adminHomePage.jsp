@@ -1,9 +1,3 @@
-<%-- 
-    Document   : adminHomePage
-    Created on : Dec 9, 2024, 8:33:48 PM
-    Author     : DELL
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Online Shopping</title>
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css"/>
+   <script src="../bootstrap/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>

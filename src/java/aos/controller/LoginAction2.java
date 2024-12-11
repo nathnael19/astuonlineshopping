@@ -7,7 +7,6 @@ package aos.controller;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/LoginAction2")
 public class LoginAction2 extends HttpServlet {
@@ -18,6 +17,7 @@ public class LoginAction2 extends HttpServlet {
         String pass = request.getParameter("password");
 
         HttpSession session = request.getSession();
+        
         if(name.equals("test") && pass.equals("1234")){
             session.setAttribute("name", name);
             response.sendRedirect("UserMode/homePage.jsp");

@@ -6,6 +6,8 @@
     <title>Login Page</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css"/>
+   <script src="bootstrap/bootstrap.bundle.min.js"></script>
     <style>
         body {
             background: #f8f9fa;

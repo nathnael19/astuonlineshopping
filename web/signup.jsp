@@ -1,9 +1,3 @@
-<%-- 
-    Document   : signup
-    Created on : Dec 10, 2024, 2:39:05 PM
-    Author     : DELL
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Signup Page</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="bootstrap/bootstrap.min.css"/>
+   <script src="bootstrap/bootstrap.bundle.min.js"></script>
         <style>
             body {
                 background-color: #f8f9fa;
@@ -37,18 +33,18 @@
         <div class="container">
             <div class="signup-form">
                 <h2 class="text-center mb-4">Create Your Account</h2>
-                <form>
+                <form action="SignupAction" method="post">
                     <div class="mb-3">
                         <label for="fullname" class="form-label">Full Name</label>
-                        <input type="text" class="form-control" id="fullname" placeholder="Enter your full name" required>
+                        <input type="text" name="name" class="form-control" id="fullname" placeholder="Enter your full name" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Gender</label>
-                        <div>
+                        <div name="gender">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="gender" id="male" value="male">
                                 <label class="form-check-label" for="male">Male</label>
@@ -66,24 +62,28 @@
 
                     <div class="mb-3">
                         <label for="city" class="form-label">City</label>
-                        <input type="text" class="form-control" id="city" placeholder="Enter your city">
+                        <input type="text" name="city" class="form-control" id="city" placeholder="Enter your city" required>
                     </div>
                     <div class="mb-3">
                         <label for="region" class="form-label">Region</label>
-                        <input type="text" class="form-control" id="region" placeholder="Enter your region/state">
+                        <input type="text" name="region" class="form-control" id="region" placeholder="Enter your region" required>
                     </div>
                     <div class="mb-3">
+                    <label for="editDob" class="form-label">Date of Birth</label>
+                    <input type="date" name="dob" class="form-control" id="editDob" placeholder="1990-03-10" required>
+                </div>
+                    <div class="mb-3">
                         <label for="address" class="form-label">Address</label>
-                        <textarea class="form-control" id="address" rows="3" placeholder="Enter your address"></textarea>
+                        <input type="text" class="form-control" name="address" id="address" rows="3" placeholder="Enter your address" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="phone" class="form-label">Phone Number</label>
-                        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                        <input type="tel" name="phoneNumber" class="form-control" id="phone" placeholder="Enter your phone number" minlength="10" maxlength="10" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Create a password" required>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Create a password" minlength="8" maxlength="32" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Sign Up</button>
                     <div class="mt-3 text-center">
