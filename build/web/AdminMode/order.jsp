@@ -1,6 +1,6 @@
 <%-- 
-    Document   : adminHomePage
-    Created on : Dec 9, 2024, 8:33:48 PM
+    Document   : order
+    Created on : Dec 10, 2024, 3:25:06 PM
     Author     : DELL
 --%>
 
@@ -10,9 +10,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Online Shopping</title>
+    <title>Orders - Online Shopping</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .orders-table-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -25,13 +35,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="adminHomePage.jsp">Home</a>
+                        <a class="nav-link" href="adminHomePage.jsp">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="addProduct.jsp">Add Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="order.jsp">Orders</a>
+                        <a class="nav-link active" href="order.jsp">Orders</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
@@ -51,68 +61,75 @@
         </div>
     </nav>
 
-    <!-- Body Section -->
-    <div class="container my-5">
+    <!-- Orders Table -->
+    <div class="orders-table-container">
+        <h2 class="text-center mb-6">Manage Orders</h2>
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
                 <thead class="table-dark">
                     <tr>
-                        <th>ID</th>
+                        <th>Order ID</th>
                         <th>Product Name</th>
-                        <th>Category</th>
-                        <th>Price ($)</th>
+                        <th>Buyer's Name</th>
+                        <th>Payment Method</th>
+                        <th>Date</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
+                        <td>001</td>
                         <td>iPhone 14</td>
-                        <td>Electronics</td>
-                        <td>799</td>
+                        <td>John Doe</td>
+                        <td>Credit Card</td>
+                        <td>2024-12-10</td>
                         <td>
-                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm ms-2">Delete</a>
+                            <a href="#" class="btn btn-success btn-sm">Accept</a>
+                            <a href="#" class="btn btn-danger btn-sm ms-2">Reject</a>
                         </td>
                     </tr>
                     <tr>
-                        <td>2</td>
+                        <td>002</td>
                         <td>Adidas Sneakers</td>
-                        <td>Footwear</td>
-                        <td>120</td>
+                        <td>Jane Smith</td>
+                        <td>PayPal</td>
+                        <td>2024-12-09</td>
                         <td>
-                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm ms-2">Delete</a>
+                            <a href="#" class="btn btn-success btn-sm">Accept</a>
+                            <a href="#" class="btn btn-danger btn-sm ms-2">Reject</a>
                         </td>
                     </tr>
                     <tr>
-                        <td>3</td>
+                        <td>003</td>
                         <td>Samsung Smart TV</td>
-                        <td>Electronics</td>
-                        <td>999</td>
+                        <td>Emily Davis</td>
+                        <td>Debit Card</td>
+                        <td>2024-12-08</td>
                         <td>
-                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm ms-2">Delete</a>
+                            <a href="#" class="btn btn-success btn-sm">Accept</a>
+                            <a href="#" class="btn btn-danger btn-sm ms-2">Reject</a>
                         </td>
                     </tr>
                     <tr>
-                        <td>4</td>
+                        <td>004</td>
                         <td>Leather Jacket</td>
-                        <td>Fashion</td>
-                        <td>150</td>
+                        <td>Michael Johnson</td>
+                        <td>Cash on Delivery</td>
+                        <td>2024-12-07</td>
                         <td>
-                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm ms-2">Delete</a>
+                            <a href="#" class="btn btn-success btn-sm">Accept</a>
+                            <a href="#" class="btn btn-danger btn-sm ms-2">Reject</a>
                         </td>
                     </tr>
                     <tr>
-                        <td>5</td>
+                        <td>005</td>
                         <td>Gaming Laptop</td>
-                        <td>Electronics</td>
-                        <td>1500</td>
+                        <td>Sarah Brown</td>
+                        <td>Bank Transfer</td>
+                        <td>2024-12-06</td>
                         <td>
-                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm ms-2">Delete</a>
+                            <a href="#" class="btn btn-success btn-sm">Accept</a>
+                            <a href="#" class="btn btn-danger btn-sm ms-2">Reject</a>
                         </td>
                     </tr>
                 </tbody>

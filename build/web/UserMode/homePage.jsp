@@ -6,87 +6,101 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home Page</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">ASTU Online Shopping</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">My Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Orders</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <!-- Profile Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Profile
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="userProfile.jsp">View Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../logout.jsp">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <body>
-        <% if(session.getAttribute("name")==null){
-            response.sendRedirect("../index.jsp");
-            }%>
-            <%@include file="userNav.jsp" %>
-        <h1>Hello <%=session.getAttribute("name")%></h1>
-        <div class="btn btn-outline-success">btn</div>
-        
+    <!-- Body Section -->
+    <div class="container my-6">
+        <h1 class="text-center">Available Products</h1>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Price ($)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>iPhone 14</td>
+                        <td>Electronics</td>
+                        <td>799</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Adidas Sneakers</td>
+                        <td>Footwear</td>
+                        <td>120</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Samsung Smart TV</td>
+                        <td>Electronics</td>
+                        <td>999</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Leather Jacket</td>
+                        <td>Fashion</td>
+                        <td>150</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Gaming Laptop</td>
+                        <td>Electronics</td>
+                        <td>1500</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-        <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Product ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Category</th>
-      <th scope="col">Price</th>
-      <th scope="col">Add to Cart</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mouse</td>
-      <td>Accessory</td>
-      <td>$20</td>
-      <td><a href="#">Add to Cart</a></td>
-    </tr>
-     <tr>
-      <th scope="row">2</th>
-      <td>Mouse</td>
-      <td>Accessory</td>
-      <td>$20</td>
-     <td><a href="#">Add to Cart</a></td>
-    </tr> <tr>
-      <th scope="row">3</th>
-      <td>Mouse</td>
-      <td>Accessory</td>
-      <td>$20</td>
-      <td><a href="#">Add to Cart</a></td>
-    </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mouse</td>
-      <td>Accessory</td>
-      <td>$20</td>
-      <td><a href="#">Add to Cart</a></td>
-    </tr>
-     <tr>
-      <th scope="row">2</th>
-      <td>Mouse</td>
-      <td>Accessory</td>
-      <td>$20</td>
-     <td><a href="#">Add to Cart</a></td>
-    </tr> <tr>
-      <th scope="row">3</th>
-      <td>Mouse</td>
-      <td>Accessory</td>
-      <td>$20</td>
-      <td><a href="#">Add to Cart</a></td>
-    </tr>
-   
-  </tbody>
-</table>
-        
-        <select class="form-select" aria-label="Default select example">
-  <option selected>Open this select menu</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
-</select>
-        
-        <footer class="center">
-            Developed by Astu Students C 2025
-        </footer>
-    </body>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
