@@ -38,9 +38,10 @@
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
-        <h3 class="text-center mb-4">Login</h3>
+        <h3 class="text-center mb-4">Forgot Password</h3>
         <form action="ForgotPassword" method="post">
             <div class="mb-3">
                 <label for="phoneNumber" class="form-label">Phone Number</label>
@@ -58,7 +59,7 @@
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
             <p class="text-center mt-3">
-                <a href="#" class="text-decoration-none">login</a>
+                <a href="index.jsp" class="text-decoration-none">login</a>
             </p>
         </form>
         

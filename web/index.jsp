@@ -35,8 +35,12 @@
         }
         .btn-primary:hover {
             background-color: #5a0fb9;
+            
         }
+        
     </style>
+    <link rel="icon" type="image/x-icon" href="assets/Free.png">
+
 </head>
 <body>
     <div class="login-container">

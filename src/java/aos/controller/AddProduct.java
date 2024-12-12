@@ -1,18 +1,13 @@
 package aos.controller;
 
+import aos.dao.DatabaseProvider;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @WebServlet("/AddProduct")
 public class AddProduct extends HttpServlet {
-
-    static String url = "jdbc:mysql://localhost:3306/aos";
-    static String userName = "root";
-    static String pass = "root";
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -22,8 +17,7 @@ public class AddProduct extends HttpServlet {
         int price = Integer.parseInt(request.getParameter("price"));
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(url, userName, pass);
+            Connection connection = DatabaseProvider.getConn();
             Statement stmt = connection.createStatement();
             Statement st = connection.createStatement();
 
@@ -47,13 +41,11 @@ public class AddProduct extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("productId", id);
                 response.sendRedirect("AdminMode/adminHomePage.jsp");
-                
+
             } else {
                 response.sendRedirect("AdminMode/userProfile.jsp");
             }
         } catch (SQLException e) {
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AddProduct.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

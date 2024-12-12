@@ -3,98 +3,59 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Online Shopping</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css"/>
-   <script src="../bootstrap/bootstrap.bundle.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">ASTU Online Shopping (Admin)</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="adminHomePage.jsp">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="addProduct.jsp">Add Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="order.jsp">Orders</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <!-- Profile Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Profile
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                            <li><a class="dropdown-item" href="adminProfile.jsp">View Profile</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="../logout.jsp">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin - Online Shopping</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="../bootstrap/bootstrap.min.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <%@include file="adminNav.jsp"%>
+        <!-- Body Section -->
+        <div class="my-6">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Price ($)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <%
+                        try {
+                            Connection con = DatabaseProvider.getConn();
+                            String qq = "SELECT * FROM products";
+                            Statement st = con.createStatement();
+                            ResultSet rs = st.executeQuery(qq);
+                            while (rs.next()) {
+
+                    %>
+                    <tbody>
+                        <tr>
+                            <td><%=rs.getInt(1)%></td>
+                            <td><%=rs.getString(2)%></td>
+                            <td><%=rs.getString(3)%></td>
+                            <td><%=rs.getInt(4)%></td>
+                            <td>
+                                <a href="editProduct.jsp?productId=<%=rs.getInt(1)%>" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="deleteProduct.jsp?productId=<%=rs.getInt(1)%>" class="btn btn-danger btn-sm ms-2">Delete</a>
+                            </td>
+                        </tr>
+                        <% }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        %>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </nav>
-
-    <!-- Body Section -->
-    <div class="container my-5">
-        <div class="table-responsive">
-            <table class="table table-striped table-bordered">
-                <thead class="table-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Product Name</th>
-                        <th>Category</th>
-                        <th>Price ($)</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <%
-                    try{
-                    Connection con = DatabaseProvider.getConn();
-//                    int id = (Integer)session.getAttribute("productId");
-                String qq= "SELECT * FROM products";
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery(qq);
-                while(rs.next()){
-                
-                %>
-                <tbody>
-                    <tr>
-                        <td><%=rs.getInt(1)%></td>
-                        <td><%=rs.getString(2)%></td>
-                        <td><%=rs.getString(3)%></td>
-                        <td><%=rs.getInt(4)%></td>
-                        <td>
-                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm ms-2">Delete</a>
-                        </td>
-                    </tr>
-                    <% }
-}catch(Exception e){
-e.printStackTrace();
-}
-                    
-                    %>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+        <script src="../bootstrap/bootstrap.bundle.min.js"></script>
+    </body>
 </html>

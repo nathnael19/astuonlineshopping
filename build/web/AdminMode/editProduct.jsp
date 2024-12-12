@@ -1,12 +1,11 @@
+<%@page import="aos.dao.DatabaseProvider"%>
+<%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Add Product - Online Shopping</title>
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Edit Product</title>
         <link rel="stylesheet" href="../bootstrap/bootstrap.min.css"/>
         <script src="../bootstrap/bootstrap.bundle.min.js"></script>
         <style>
@@ -22,20 +21,32 @@
     </head>
     <body>
         <%@include file="adminNav.jsp"%>
-        <!-- Add Product Form -->
+        <%
+            int productId = Integer.parseInt(request.getParameter("productId"));
+            try {
+                Connection conn = DatabaseProvider.getConn();
+                Statement stmt = conn.createStatement();
+                String q1 = "select * from products where productId='" + productId + "'";
+
+                ResultSet rs = stmt.executeQuery(q1);
+                while (rs.next()) {
+        %>
         <div class="form-container">
-            <h2 class="text-center mb-4">Add New Product</h2>
-            <form action="../AddProduct" method="post">
+            <h2 class="text-center mb-4">Edit Product</h2>
+            <form action="../EditProduct" method="post">
+                <div class="mb-3">
+                    <input type="hidden" name="productId" class="form-control" id="productId" value="<%=rs.getInt(1)%>" required>
+                </div>
                 <!-- Product Name -->
                 <div class="mb-3">
                     <label for="productName" class="form-label">Product Name</label>
-                    <input type="text" name="name" class="form-control" id="productName" placeholder="Enter product name" required>
+                    <input type="text" name="name" class="form-control" id="productName" value="<%=rs.getString(2)%>" required>
                 </div>
 
                 <!-- Category -->
                 <div class="mb-3">
                     <label for="productCategory" class="form-label">Category</label>
-                    <select class="form-select" id="productCategory" name="productCategory" required>
+                    <select class="form-select" id="productCategory" name="productCategory" value="<%=rs.getString(3)%>" required>
                         <option selected disabled>Select category</option>
                         <option value="Electronics">Electronics</option>
                         <option value="Footwear">Footwear</option>
@@ -48,18 +59,20 @@
                 <!-- Price -->
                 <div class="mb-3">
                     <label for="productPrice" class="form-label">Price ($)</label>
-                    <input type="number" name="price" class="form-control" id="productPrice" placeholder="Enter product price" required>
+                    <input type="number" name="price" class="form-control" id="productPrice" value="<%=rs.getInt(4)%>" required>
                 </div>
-
+                <%}%>
                 <!-- Submit Button -->
                 <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-primary">Add Product</button>
+                    <button type="submit" class="btn btn-primary">Update Product</button>
                 </div>
             </form>
-        </div>
+            <%
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-        <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            %>
+        </div>
     </body>
 </html>
-

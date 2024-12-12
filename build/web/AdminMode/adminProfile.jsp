@@ -64,42 +64,7 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">ASTU Online Shopping (Admin)</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="adminHomePage.jsp">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="addProduct.jsp">Add Product</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="order.jsp">Orders</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <!-- Profile Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Profile
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                            <li><a class="dropdown-item" href="adminProfile.jsp">View Profile</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="../logout.jsp">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+        <%@include file="adminNav.jsp"%>
     <!-- Profile Page -->
     <div class="profile-container">
         <div class="profile-header">
@@ -109,7 +74,6 @@
             <button class="btn-add-image" onclick="document.getElementById('imageUpload').click()">+</button>
             <input type="file" id="imageUpload" class="file-input" accept="image/*" onchange="changeProfileImage(event)">
             <h2 class="mt-3" id="profileName">John Doe</h2>
-            <p class="text-muted" id="profileJoinDate">Joined: January 15, 2024</p>
         </div>
 
         <!-- Profile Information -->
@@ -137,7 +101,7 @@
 
         <!-- Profile Edit Mode -->
         <div class="profile-info" id="profileEditMode" style="display: none;">
-            <form id="editProfileForm">
+            <form id="editProfileForm" action="../UpdateProfile" method="post">
                 <div class="mb-3">
                     <label for="editFullName" class="form-label">Full Name</label>
                     <input type="text" class="form-control" id="editFullName" value="John Doe" required>
@@ -172,8 +136,7 @@
             <button class="btn btn-primary" onclick="toggleEditMode()">Edit Profile</button>
         </div>
     </div>
-
-    <!-- Bootstrap JS -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JavaScript to handle edit and image upload functionality -->

@@ -6,15 +6,9 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @WebServlet("/SignupAction")
 public class SignupAction extends HttpServlet {
-
-    static String url = "jdbc:mysql://localhost:3306/aos";
-    static String userName = "root";
-    static String pass = "root";
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -30,18 +24,21 @@ public class SignupAction extends HttpServlet {
         String password = request.getParameter("password");
 
         String createTable = "CREATE TABLE IF NOT exists users(userId int not null primary key, fullName varchar(100) not null, email varchar(100), gender varchar(10),phoneNumber int not null,password varchar(50),region varchar(100),city varchar(100),address varchar(100), dob varchar(100));";
+        String createTableAdmin = "CREATE TABLE IF NOT exists admin(adminId int not null primary key, fullName varchar(100) not null, email varchar(100), gender varchar(10),phoneNumber int not null,password varchar(50),region varchar(100),city varchar(100),address varchar(100), dob varchar(100));";
 
         String insertUser = "INSERT INTO users VALUES(?,?,?,?,?,?,?,?,?,?)";
+        String insertAdmin = "INSERT INTO admin VALUES(?,?,?,?,?,?,?,?,?,?)";
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(url, userName, pass);
-
+            Connection connection = DatabaseProvider.getConn();
             Statement st = connection.createStatement();
             st.executeUpdate(createTable);
+            st.executeUpdate(createTableAdmin);
 
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("select max(userId) from users");
+            ResultSet rsAdmin = stmt.executeQuery("select max(adminId) from users");
+
             while (rs.next()) {
                 id = rs.getInt(1);
                 id++;
@@ -58,12 +55,28 @@ public class SignupAction extends HttpServlet {
             ps.setString(9, address);
             ps.setString(10, dob);
 
-            ps.executeUpdate();
+            int row1=ps.executeUpdate();
+            
+            PreparedStatement psAdmin = connection.prepareStatement(insertAdmin);
+            psAdmin.setInt(1, id);
+            psAdmin.setString(2, "Nathnael Nigussie");
+            psAdmin.setString(3, "nathnael@gmail.com");
+            psAdmin.setString(4, "Male");
+            psAdmin.setLong(5, 919933640);
+            psAdmin.setString(6, "admin");
+            psAdmin.setString(7, "Oromia");
+            psAdmin.setString(8, "Chiro");
+            psAdmin.setString(9, "bahrdar");
+            psAdmin.setString(10, "2003/12/29");
+            
+            int row2 = psAdmin.executeUpdate();
+            if(row1>0 || row2>0){
+                response.sendRedirect("signup.jsp?msg=success");
+            }else{
+                response.sendRedirect("signup.jsp?msg=fail");
+            }
         } catch (SQLException e) {
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SignupAction.class.getName()).log(Level.SEVERE, null, ex);
         }
-        PrintWriter out = response.getWriter();
-        out.println(id);
+        
     }
 }

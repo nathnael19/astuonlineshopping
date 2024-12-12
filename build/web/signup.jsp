@@ -7,7 +7,7 @@
         <title>Signup Page</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="bootstrap/bootstrap.min.css"/>
-   <script src="bootstrap/bootstrap.bundle.min.js"></script>
+        <script src="bootstrap/bootstrap.bundle.min.js"></script>
         <style>
             body {
                 background-color: #f8f9fa;
@@ -31,9 +31,19 @@
     <body>
 
         <div class="container">
+
             <div class="signup-form">
                 <h2 class="text-center mb-4">Create Your Account</h2>
                 <form action="SignupAction" method="post">
+                                <% // String msg = request.getParameter("msg");
+//                if (msg.equals("success")) {
+            %>
+            <p>Successfully Registered</p>
+            <%
+//            } else {
+            %>
+            <p>Something went Wrong!</p>
+            <% //}%>
                     <div class="mb-3">
                         <label for="fullname" class="form-label">Full Name</label>
                         <input type="text" name="name" class="form-control" id="fullname" placeholder="Enter your full name" required>
@@ -44,7 +54,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Gender</label>
-                        <div name="gender">
+                        <div name="gender" required>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="gender" id="male" value="male">
                                 <label class="form-check-label" for="male">Male</label>
@@ -52,10 +62,6 @@
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="gender" id="female" value="female">
                                 <label class="form-check-label" for="female">Female</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" id="other" value="other">
-                                <label class="form-check-label" for="other">Other</label>
                             </div>
                         </div>
                     </div>
@@ -69,9 +75,9 @@
                         <input type="text" name="region" class="form-control" id="region" placeholder="Enter your region" required>
                     </div>
                     <div class="mb-3">
-                    <label for="editDob" class="form-label">Date of Birth</label>
-                    <input type="date" name="dob" class="form-control" id="editDob" placeholder="1990-03-10" required>
-                </div>
+                        <label for="editDob" class="form-label">Date of Birth</label>
+                        <input type="date" name="dob" class="form-control" id="editDob" placeholder="1990-03-10" required>
+                    </div>
                     <div class="mb-3">
                         <label for="address" class="form-label">Address</label>
                         <input type="text" class="form-control" name="address" id="address" rows="3" placeholder="Enter your address" required>
