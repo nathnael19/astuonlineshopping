@@ -1,3 +1,5 @@
+<%@page import="aos.dao.DatabaseProvider"%>
+<%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,57 +62,33 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
+                <%
+                    try{
+                    Connection con = DatabaseProvider.getConn();
+//                    int id = (Integer)session.getAttribute("productId");
+                String qq= "SELECT * FROM products";
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery(qq);
+                while(rs.next()){
+                
+                %>
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>iPhone 14</td>
-                        <td>Electronics</td>
-                        <td>799</td>
+                        <td><%=rs.getInt(1)%></td>
+                        <td><%=rs.getString(2)%></td>
+                        <td><%=rs.getString(3)%></td>
+                        <td><%=rs.getInt(4)%></td>
                         <td>
                             <a href="#" class="btn btn-warning btn-sm">Edit</a>
                             <a href="#" class="btn btn-danger btn-sm ms-2">Delete</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Adidas Sneakers</td>
-                        <td>Footwear</td>
-                        <td>120</td>
-                        <td>
-                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm ms-2">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Samsung Smart TV</td>
-                        <td>Electronics</td>
-                        <td>999</td>
-                        <td>
-                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm ms-2">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Leather Jacket</td>
-                        <td>Fashion</td>
-                        <td>150</td>
-                        <td>
-                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm ms-2">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Gaming Laptop</td>
-                        <td>Electronics</td>
-                        <td>1500</td>
-                        <td>
-                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm ms-2">Delete</a>
-                        </td>
-                    </tr>
+                    <% }
+}catch(Exception e){
+e.printStackTrace();
+}
+                    
+                    %>
                 </tbody>
             </table>
         </div>

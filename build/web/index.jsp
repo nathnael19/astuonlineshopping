@@ -43,8 +43,8 @@
         <h3 class="text-center mb-4">Login</h3>
         <form action="LoginAction2" method="post">
             <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" name="name" class="form-control" id="name" placeholder="Enter your name" required>
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
@@ -54,7 +54,7 @@
                 <button type="submit" class="btn btn-primary">Login</button>
             </div>
             <p class="text-center mt-3">
-                <a href="#" class="text-decoration-none">Forgot Password?</a>
+                <a href="forgotPassword.jsp" class="text-decoration-none">Forgot Password?</a>
             </p>
             <div class="mt-3 text-center">
                         <p>Not a member? <a href="signup.jsp">Register here</a></p>

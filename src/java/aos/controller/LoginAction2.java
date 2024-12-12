@@ -1,34 +1,45 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package aos.controller;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
+import java.sql.*;
 
 @WebServlet("/LoginAction2")
 public class LoginAction2 extends HttpServlet {
 
+    static String url = "jdbc:mysql://localhost:3306/aos";
+    static String userName = "root";
+    static String pass = "root";
+
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String name = request.getParameter("name");
-        String pass = request.getParameter("password");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
 
         HttpSession session = request.getSession();
-        
-        if(name.equals("test") && pass.equals("1234")){
-            session.setAttribute("name", name);
-            response.sendRedirect("UserMode/homePage.jsp");
-        }else if(name.equals("admin") && pass.equals("admin")){
-            session.setAttribute("name", name);
-            response.sendRedirect("AdminMode/adminHomePage.jsp");
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(url, userName, pass);
+            Statement stmt = connection.createStatement();
+
+            String query = "SELECT * FROM users WHERE email='" + email + "' and password='" + password + "'";
+
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                response.sendRedirect("UserMode/homePage.jsp");
+
+            }
+            if (email.equals("admin@gmail.com") && password.equals("admin")) {
+                session.setAttribute("email", email);
+                response.sendRedirect("AdminMode/adminHomePage.jsp");
+            } else {
+                response.sendRedirect("index.jsp");
+
+            }
+
+        } catch (IOException | ClassNotFoundException | SQLException e) {
         }
-        
-        else{
-            response.sendRedirect("index.jsp");
-           
-        }
+
     }
 }

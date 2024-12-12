@@ -41,24 +41,25 @@
 <body>
     <div class="login-container">
         <h3 class="text-center mb-4">Login</h3>
-        <form action="LoginAction2" method="post">
+        <form action="ForgotPassword" method="post">
             <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" required>
+                <label for="phoneNumber" class="form-label">Phone Number</label>
+                <input type="number" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Enter your Phone Number" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password" required>
             </div>
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="Enter your password" required>
+            </div>
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
             <p class="text-center mt-3">
-                <a href="forgotPassword.jsp" class="text-decoration-none">Forgot Password?</a>
+                <a href="#" class="text-decoration-none">login</a>
             </p>
-            <div class="mt-3 text-center">
-                        <p>Not a member? <a href="signup.jsp">Register here</a></p>
-                    </div>
         </form>
         
     </div>
