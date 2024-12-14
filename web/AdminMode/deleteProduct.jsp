@@ -1,5 +1,14 @@
 <%@page import="aos.dao.DatabaseProvider"%>
 <%@page import="java.sql.*"%>
+
+<%
+            String email = (String)session.getAttribute("loginEmail");
+            String pass = (String)session.getAttribute("loginPass");
+            
+            if(email==null && pass==null){
+                response.sendRedirect("../index.jsp?msg=Login First");
+            }
+        %>
 <%
     int productId = Integer.parseInt(request.getParameter("productId"));
 

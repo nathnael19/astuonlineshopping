@@ -8,9 +8,14 @@
    <script src="../bootstrap/bootstrap.bundle.min.js"></script>
     </head>
     <body>
-        <% if(session.getAttribute("name")==null){
-            response.sendRedirect("../index.jsp");
-            }%>
+        <%
+            String email = (String)session.getAttribute("loginEmail");
+            String pass = (String)session.getAttribute("loginPass");
+            
+            if(email==null && pass==null){
+                response.sendRedirect("../index.jsp?msg=Login First");
+            }
+        %>
         
             <%@include file="userNav.jsp" %>
             <div class="my-6">

@@ -10,6 +10,14 @@
         <link rel="stylesheet" href="../bootstrap/bootstrap.min.css"/>
     </head>
     <body>
+        <%
+            String email = (String)session.getAttribute("loginEmail");
+            String pass = (String)session.getAttribute("loginPass");
+            
+            if(email==null && pass==null){
+                response.sendRedirect("../index.jsp?msg=Login First");
+            }
+        %>
         <%@include file="userNav.jsp" %>
         <div class="my-6">
             <h1 class="text-center">Available Products</h1>

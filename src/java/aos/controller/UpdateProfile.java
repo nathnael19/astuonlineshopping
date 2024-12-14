@@ -43,7 +43,7 @@ public class UpdateProfile extends HttpServlet {
                 int row = stmt.executeUpdate();
 
                 if (row > 0) {
-                    response.sendRedirect("UserMode/userProfile.jsp?msg=success");
+                    response.sendRedirect("UserMode/userProfile.jsp?loginEmail=email");
                 } else {
                     response.sendRedirect("index.jsp");
                 }

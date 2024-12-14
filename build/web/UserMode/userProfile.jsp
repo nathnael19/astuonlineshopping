@@ -66,10 +66,14 @@
         </style>
     </head>
     <body>
-        <%@include file="userNav.jsp" %>
         <%
-            String email = (String) session.getAttribute("loginEmail");
-            String pass = (String) session.getAttribute("loginPass");
+            String email = (String)session.getAttribute("loginEmail");
+            String pass = (String)session.getAttribute("loginPass");
+            
+            if(email==null && pass==null){
+                response.sendRedirect("../index.jsp?msg=Login First");
+            }
+        
             String query = "select * from users where email='" + email + "' and password='" + pass + "'";
             try {
                 Connection connection = DatabaseProvider.getConn();
@@ -79,6 +83,7 @@
                 while (rs.next()) {
 
         %>
+        <%@include file="userNav.jsp" %>%>
         <div class="profile-container">
             <div class="profile-header">
 
@@ -125,7 +130,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="editEmail" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control" id="editEmail" value="<%=rs.getString(3)%>" required>
+                        <input type="email" name="editEmail" class="form-control" id="editEmail" value="<%=rs.getString(3)%>" required>
                     </div>
                     <div class="mb-3">
                         <label for="editPhone" class="form-label">Phone</label>
@@ -147,7 +152,8 @@
                     <button type="submit" class="btn btn-primary">Save Changes</button>
                     <button type="button" class="btn btn-secondary ms-2" onclick="toggleEditMode()">Cancel</button>
                 </form>
-                <%     }
+                <%   String emailUpdate = request.getParameter("editEmail");
+                    session.setAttribute("loginEmail",emailUpdate); }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

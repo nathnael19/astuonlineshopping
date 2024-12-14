@@ -12,6 +12,14 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
+        <%
+            String email = (String)session.getAttribute("loginEmail");
+            String pass = (String)session.getAttribute("loginPass");
+            
+            if(email==null && pass==null){
+                response.sendRedirect("../index.jsp?msg=Login First");
+            }
+        %>
         <%@include file="adminNav.jsp"%>
         <!-- Body Section -->
         <div class="my-6">
