@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css"/>
    <script src="bootstrap/bootstrap.bundle.min.js"></script>
     <style>
@@ -29,10 +28,10 @@
             border-color: #6a11cb;
             box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
         }
-        .btn-primary {
+/*        .btn-primary {
             background-color: #6a11cb;
             border: none;
-        }
+        }*/
         .btn-primary:hover {
             background-color: #5a0fb9;
         }
@@ -45,7 +44,7 @@
         <form action="ForgotPassword" method="post">
             <div class="mb-3">
                 <label for="phoneNumber" class="form-label">Phone Number</label>
-                <input type="number" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Enter your Phone Number" required>
+                <input type="tel" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Enter your Phone Number" maxlength="10" minlength="10" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
@@ -56,7 +55,7 @@
                 <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="Enter your password" required>
             </div>
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Reset</button>
             </div>
             <p class="text-center mt-3">
                 <a href="index.jsp" class="text-decoration-none">login</a>

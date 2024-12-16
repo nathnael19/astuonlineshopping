@@ -8,12 +8,12 @@
     </head>
     <body>
         <%
-            String email = (String)session.getAttribute("loginEmail");
-            String pass = (String)session.getAttribute("loginPass");
-            
-            if(email==null && pass==null){
-                response.sendRedirect("../index.jsp?msg=Login First");
-            }
+//            String email = (String)session.getAttribute("loginEmail");
+//            String pass = (String)session.getAttribute("loginPass");
+//            
+//            if(email==null && pass==null){
+//                response.sendRedirect("../index.jsp?msg=Login First");
+//            }
         %>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">

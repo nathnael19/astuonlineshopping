@@ -34,6 +34,9 @@
         <div class="form-container">
             <h2 class="text-center mb-4">Add New Product</h2>
             <form action="../AddProduct" method="post">
+                <div>
+                    <input type="file" accept="image/*" name="fileName" required>
+                </div>
                 <!-- Product Name -->
                 <div class="mb-3">
                     <label for="productName" class="form-label">Product Name</label>

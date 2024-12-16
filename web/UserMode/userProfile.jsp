@@ -70,9 +70,9 @@
             String email = (String)session.getAttribute("loginEmail");
             String pass = (String)session.getAttribute("loginPass");
             
-            if(email==null && pass==null){
-                response.sendRedirect("../index.jsp?msg=Login First");
-            }
+//            if(email==null && pass==null){
+//                response.sendRedirect("../index.jsp?msg=Login First");
+//            }
         
             String query = "select * from users where email='" + email + "' and password='" + pass + "'";
             try {
